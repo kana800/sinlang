@@ -3,13 +3,29 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("sinlang")
+project ("sinlang" CXX)
 
-# Add source to this project's executable.
-add_executable (sinlang "src/sinlang.cpp" "src/sinlang.h")
+set(SOURCES
+	"main.cpp"
+)
+
+add_executable (${PROJECT_NAME} ${SOURCES})
+
+enable_testing()
+
+set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+
+
+add_subdirectory(googletest)
+add_subdirectory(cpplox)
+add_subdirectory(test)
+
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+target_link_libraries(${PROJECT_NAME} cpplox)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET sinlang PROPERTY CXX_STANDARD 20)
+  set_property(TARGET cpplox PROPERTY CXX_STANDARD 20)
+  set_property(TARGET TokenTest PROPERTY CXX_STANDARD 20)
 endif()
-
-# TODO: Add tests and install targets if needed.

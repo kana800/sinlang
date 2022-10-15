@@ -178,11 +178,18 @@ private:
 	}
 
 	char peek() {
+		/*summary: looks ahead from
+		the string and returns 
+		the character*/
 		if (isAtEnd()) return '\0';
 		return source.at(current);
 	}
 
 	bool match(char expected) {
+		/*looks ahead from the string and 
+		tells us whether the `expected` character 
+		is present.Its a combination peek() 
+		and advance(); */
 		if (isAtEnd()) return false;
 		if (source.at(current) != expected) return false;
 		current++;

@@ -10,7 +10,6 @@
 
 std::string readFile(std::string_view& path) {
 	/**/
-	/*difference between {} ()*/
 	std::ifstream file(path.data(),
 		std::ios::in, std::ios::binary | std::ios::ate);
 

@@ -84,9 +84,9 @@ TEST(TokenTest, ValidToken) {
 
 	EXPECT_EQ(line_3_test.size(), line_3_prog.size());
 	// Iterate through the tokens of string 2
-	for (int i = 0; i < line_2_test.size(); ++i) {
-		EXPECT_EQ(line_2_test[i].getTokenType(),
-			line_2_prog[i].getTokenType());
+	for (int i = 0; i < line_3_test.size(); ++i) {
+		EXPECT_EQ(line_3_test[i].getTokenType(),
+			line_3_prog[i].getTokenType());
 	}
 
 }

@@ -1,13 +1,18 @@
-### sinlang
- 
+ <!-- PROJECT LOGO -->
+<br />
+<p style="text-align: center" align="center">
+  <a href="https://github.com/kana800/sinlang">
+  <img src="images/sinlang.png" alt="logo"> 
+  </a>
+
+  <h3 align="center">cpplox</h3>
+  <p align="center">
+    <br />
+    <a href="https://github.com/kana800/sinlang/issues">Report Bug</a>
+  </p>
+</p>
 
 
-## Chapter4::Scanning
+### Table Of Content
 
-
-find 
-
-- https://cplusplus.com/doc/tutorial/files/
-	- in here we are using something called tellg, which is a pointer that point to the end of the file is we use ios::ate flag
-	do some research about thgis
-
+- [Chapter 4: Scanner](https://github.com/kana800/sinlang/tree/chp4)

@@ -38,3 +38,41 @@ semantics is the meaning of the language.
 - wrong syntax results in no meaning
 - In English(NL), correct syntax could also result in something meaningless. **We need to avoid this in programming**. 
 - syntax impacts the semantics
+
+#### Terminals or Terminal Symbols
+
+- Base tokens of the language. For a programming language these can be
+    - keywords
+    - operators and other symbols
+    - the character that can be used in identifiers, numbers, or other program elements
+
+#### Nonterminals or Nonterminal Symbols
+
+- Represent pieces of the structure for a grammar.
+- For English these would include:
+    - noun 
+    - verb
+    - noun phrase, verb phase
+- For Programming Language
+    - statements
+    - conditions
+    - subroutine
+
+#### Productions, or Production Rules
+
+- These are rules that make up the grammar. 
+- They translate a nonterminal to a sequence of one or more nonterminals or terminals
+
+Example:
+- A sentence is a noun phrase followed by a verb phrase
+- A verb phrase is a verb or a verb followed by a noun phrase
+- A verb is one of list of words
+
+#### Expressing a Grammar
+
+##### Elements of BNF
+ 
+
+### Running
+
+I have set the `GenerateAst.cpp` in the `tools` directory; To build the `GenerateAst.cpp` You need to

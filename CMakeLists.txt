@@ -22,7 +22,7 @@ enable_testing()
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 
-add_subdirectory(googletest)
+add_subdirectory(external/googletest)
 add_subdirectory(cpplox)
 add_subdirectory(test)
 

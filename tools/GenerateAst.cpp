@@ -36,13 +36,13 @@ std::vector<std::string_view> split(
 	/*splits the string*/
 	std::vector<std::string_view> ret;
 
-	int start = 0;
-	int end = src.find(del);
+	std::string_view::size_type start = 0;
+	std::string_view::size_type end = src.find(del);
 
-	std::cout << start << "|" << end << std::endl;
+	//std::cout << start << "|" << end << std::endl;
 
-	while (end != std::string::npos) {
-		std::cout << src.substr(start, end - start) << std::endl;
+	while (end != std::string_view::npos) {
+		ret.push_back(src.substr(start, end - start));
 		start = end + del.length();
 		end = src.find(del, start);
 	}
@@ -62,6 +62,10 @@ std::string_view trim(std::string_view str) {
 	auto start = std::find_if_not(str.begin(), str.end(), isspace);
 	auto end = std::find_if_not(str.rbegin(), str.rend(),
 		isspace).base();
+
+
+	std::string_view t{ start.operator->(), std::string_view::size_type(end - start)};
+	std::cout << "trimmed " << t;
 
 	return { start.operator->(),
 		std::string_view::size_type(end - start)};
@@ -241,9 +245,9 @@ int main(int argc, char* argv[]) {
 
 
 	defineAst(outputDir, "Expr", {
-	"Binary   : Expr* left, Token op, Expr* right",
-	"Grouping : Expr* expression",
-	"Literal  : std::any value",
-	"Unary    : Token op, Expr* right"
+		"Binary   : Expr* left, Token op, Expr* right",
+		"Grouping : Expr* expression",
+		"Literal  : std::any value",
+		"Unary    : Token op, Expr* right"
 	});
 }

@@ -2,7 +2,7 @@
 <br />
 <p style="text-align: center" align="center">
   <a href="https://github.com/kana800/sinlang">
-  <img src="images/sinlang.png" alt="logo"> 
+  <img src=".images/sinlang.png" alt="logo"> 
   </a>
 
   <h3 align="center">cpplox</h3>

@@ -1,4 +1,4 @@
- <!-- PROJECT LOGO -->
+﻿ <!-- PROJECT LOGO -->
 <br />
 <p style="text-align: center" align="center">
   <a href="https://github.com/kana800/sinlang">
@@ -13,25 +13,31 @@
 </p>
 
 
-### Table Of Content
+## Table Of Content
 
 - [Chapter 4: Scanner](https://github.com/kana800/sinlang/tree/chp4)
 - [Chapter 5: Representing Code](https://github.com/kana800/sinlang/tree/chp4)
 
+---
 
-### [Introduction to Grammars and BNF](https://www.youtube.com/watch?v=F25ez8s3AsQ)
+## [Introduction to Grammars and BNF](https://www.youtube.com/watch?v=F25ez8s3AsQ)
 
-#### Syntax
+> Notes are from ["Introduction to grammars and BNF video"](https://www.youtube.com/watch?v=F25ez8s3AsQ)
 
-syntax of language is the structure of a language.
+
+### Syntax
+
+> syntax of language is the structure of a language.
 
 Example: 
+
 >The girl ate the pasta
 correct syntax
+
 > girl pasta the ate the 
 incorrect syntax
 
-#### Semantics
+### Semantics
 
 semantics is the meaning of the language.
 
@@ -39,14 +45,14 @@ semantics is the meaning of the language.
 - In English(NL), correct syntax could also result in something meaningless. **We need to avoid this in programming**. 
 - syntax impacts the semantics
 
-#### Terminals or Terminal Symbols
+### Terminals or Terminal Symbols
 
 - Base tokens of the language. For a programming language these can be
     - keywords
     - operators and other symbols
     - the character that can be used in identifiers, numbers, or other program elements
 
-#### Nonterminals or Nonterminal Symbols
+### Nonterminals or Nonterminal Symbols
 
 - Represent pieces of the structure for a grammar.
 - For English these would include:
@@ -58,7 +64,7 @@ semantics is the meaning of the language.
     - conditions
     - subroutine
 
-#### Productions, or Production Rules
+### Productions, or Production Rules
 
 - These are rules that make up the grammar. 
 - They translate a nonterminal to a sequence of one or more nonterminals or terminals
@@ -68,11 +74,53 @@ Example:
 - A verb phrase is a verb or a verb followed by a noun phrase
 - A verb is one of list of words
 
-#### Expressing a Grammar
+### Expressing a Grammar
 
-##### Elements of BNF
+#### Elements of BNF
  
+- Terminals are simply written out: `while`
+- Noneterminals are enclosed in angle brackets: `<statement>`
+- Production are in the form:
+    - `<nonterminal> ::= <sequence of terminals or non terminals>`
+    - `<sentence> ::= <noun phrase><verb phrase>`
+- we can use `|` to represent `or`
+
+Simple Example using BNF
+
+```
+<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<integer> ::= <digit> | <digit><integer>
+<floating point> ::= <integer>.<integer>
+```
+
+### Grammar for Lox
+
+```
+expression     → literal
+               | unary
+               | binary
+               | grouping ;
+
+literal        → NUMBER | STRING | "true" | "false" | "nil" ;
+grouping       → "(" expression ")" ;
+unary          → ( "-" | "!" ) expression ;
+binary         → expression operator expression ;
+operator       → "==" | "!=" | "<" | "<=" | ">" | ">="
+               | "+"  | "-"  | "*" | "/" ;
+```
+
+
+---
 
 ### Running
 
-I have set the `GenerateAst.cpp` in the `tools` directory; To build the `GenerateAst.cpp` You need to
+I have set the `GenerateAst.cpp` in the `tools` directory; You can find the *executable* in the `out` directory.
+
+```
+GenerateAst <path_for_file>
+```
+
+### References
+
+- [lambda way cpplox](https://github.com/the-lambda-way/CppLox/blob/master/chapter5)
+- [Introduction to Grammar and BNF](https://www.youtube.com/watch?v=F25ez8s3AsQ)

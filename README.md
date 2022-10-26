@@ -16,7 +16,7 @@
 ## Table Of Content
 
 - [Chapter 4: Scanner](https://github.com/kana800/sinlang/tree/chp4)
-- [Chapter 5: Representing Code](https://github.com/kana800/sinlang/tree/chp4)
+- [Chapter 5: Representing Code](https://github.com/kana800/sinlang/tree/chp5)
 
 ---
 

@@ -21,6 +21,10 @@
 
 ---
 
+
+> Purpose of parse is show how the sentence and grammar are related. 
+"How the grammar of the sentences matches the grammar that I have". 
+
 ### Precedence and Associativity
 
 - Precedence determines which operator is evaluated first 
@@ -74,4 +78,8 @@ primary        → NUMBER | STRING | "true" | "false" | "nil"
 
 ---
 
+
+### References
+
+- [parse trees](https://www.youtube.com/watch?v=SYQVxGnlpZM&t=9s)
 

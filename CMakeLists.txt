@@ -7,8 +7,7 @@ set(SOURCES
 )
 
 # SETTING TOOLS to be true will build 
-# GenerateAst.cpp
-set(TOOLS 1)
+set(TOOLS 0)
 
 if(TOOLS)
 	message("building tools")
@@ -33,5 +32,5 @@ target_link_libraries(${PROJECT_NAME} cpplox)
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET sinlang PROPERTY CXX_STANDARD 20)
   set_property(TARGET cpplox PROPERTY CXX_STANDARD 20)
-  set_property(TARGET TokenTest PROPERTY CXX_STANDARD 20)
+  set_property(TARGET SinLangTest PROPERTY CXX_STANDARD 20)
 endif()

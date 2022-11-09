@@ -79,6 +79,13 @@ primary        → NUMBER | STRING | "true" | "false" | "nil"
 ---
 
 
+> A parser has two jobs: 
+1. Given a valid sequence of tokens, produce a corresponding syntax tree.
+2. Given an invalid sequence of tokens, detect any errors and tell the 
+user about their mistakes.
+
+
+
 ### References
 
 - [parse trees](https://www.youtube.com/watch?v=SYQVxGnlpZM&t=9s)

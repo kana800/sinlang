@@ -5,6 +5,7 @@
 #include <fstream>
 
 #include "Scanner.hpp"
+#include "Parser.hpp"
 
 
 
@@ -34,6 +35,10 @@ std::vector<Token> run(std::string_view source) {
 	/**/
 	Scanner scanner{ source };
 	std::vector<Token> tokens = scanner.scanTokens();
+	Parser parser{ tokens };
+	std::shared_ptr<Expr> expr = parser.parse();
+
+	if (hadError) return;
 
 	/*
 	for (const Token& token : tokens) {

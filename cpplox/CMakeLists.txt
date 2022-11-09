@@ -6,6 +6,7 @@ set(HEADERS
 	"Error.hpp"
 	"Options.hpp"
 	"TokenType.hpp"
+	"Parser.hpp"
 )
 
 set(SOURCES 

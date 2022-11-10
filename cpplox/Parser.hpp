@@ -6,6 +6,8 @@
 #include <sstream>
 #include <utility>
 #include <string>
+#include <stdexcept>
+#include <cassert>
 #include <string_view>
 
 #include "Error.hpp"
@@ -45,7 +47,7 @@ private: /*methods*/
 		std::shared_ptr<Expr> expr = comparison();
 
 		while (match(BANG_EQUAL, EQUAL_EQUAL)) {
-			Token operator = previous();
+			Token op = Parser::previous();
 			std::shared_ptr<Expr> right = comparison();
 			expr = std::make_shared<Binary>(expr, std::move(op), right);
 		}
@@ -56,7 +58,7 @@ private: /*methods*/
 		std::shared_ptr<Expr> expr = term();
 
 		while (match(GREATER, GREATER_EQUAL, LESS, LESS_EQUAL)){
-			Token operator = previous();
+			Token op = previous();
 			std::shared_ptr<Expr> right = term();
 			expr = std::make_shared<Binary>(
 				expr, std::move(op), right);
@@ -66,35 +68,35 @@ private: /*methods*/
 	}
 
 	std::shared_ptr<Expr> term() {
-		Expr expr = factor();
+		std::shared_ptr<Expr> expr = factor();
 
 		while (match(MINUS, PLUS)) {
-			Token operator = previous();
+			Token op = previous();
 			std::shared_ptr<Expr> right = factor();
 			expr = std::make_shared<Binary>(
-				expr, std::move(operator), right);
+				expr, std::move(op), right);
 		}
 
 		return expr;
 	}
 
 	std::shared_ptr<Expr> factor() {
-		Expr expr = unary();
+		std::shared_ptr<Expr> expr = unary();
 
 		while (match(SLASH, STAR)) {
-			Token operator = previous();
+			Token op = previous();
 			std::shared_ptr<Expr> right = unary();
 			expr = std::make_shared<Binary>(
-				expr, std::move(operator), right);
+				expr, std::move(op), right);
 		}
 		return expr;
 	}
 
 	std::shared_ptr<Expr> unary() {
 		if (match(BANG, MINUS)) {
-			Token operator = previous();
+			Token op = previous();
 			std::shared_ptr<Expr> right = unary();
-			return expr = std::make_shared<Unary>(
+			return std::make_shared<Unary>(
 				std::move(op), right);
 		}
 		return primary();
@@ -106,11 +108,12 @@ private: /*methods*/
 		if (match(NIL)) return std::make_shared<Literal>(nullptr);
 
 		if (match(NUMBER, STRING)) {
-			return std::make_shared<Literal>(previous().literal);
+			return std::make_shared<Literal>(
+				previous().getLiteral());
 		}
 
 		if (match(LEFT_PAREN)) {
-			std::make_shared<Expr> expr = expression();
+			std::shared_ptr<Expr> expr = expression();
 			consume(RIGHT_PAREN, "Expect ')' after expression.");
 			return std::make_shared<Grouping>(expr);
 		}
@@ -140,7 +143,11 @@ private: /*methods*/
 
 	bool check(TokenType type) {
 		if (isAtEnd()) return false;
-		return peek().type == type;
+		return peek().getTokenType() == type;
+	}
+
+	Token previous() {
+		return tokens.at(current - 1);
 	}
 
 	Token advance() {
@@ -149,7 +156,7 @@ private: /*methods*/
 	}
 
 	bool isAtEnd() {
-		return peek().type 
+		return peek().getTokenType()
 			== END_OF_FILE;
 	}
 
@@ -157,9 +164,6 @@ private: /*methods*/
 		return tokens.at(current);
 	}
 
-	Token previous() {
-		return tokens.at(current - 1);
-	}
 
 	ParseError error(
 		const Token& token, 

@@ -84,9 +84,13 @@ primary        → NUMBER | STRING | "true" | "false" | "nil"
 2. Given an invalid sequence of tokens, detect any errors and tell the 
 user about their mistakes.
 
+### [Types of Languages/Grammar](https://youtu.be/SToUyjAsaFk?t=1487)
+
 
 
 ### References
 
-- [parse trees](https://www.youtube.com/watch?v=SYQVxGnlpZM&t=9s)
+- [Parse Trees](https://www.youtube.com/watch?v=SYQVxGnlpZM&t=9s)
+- [Recursive Descent Parsing](https://www.youtube.com/watch?v=SToUyjAsaFk)
+- [Recursive Descent Parser Example](https://www.youtube.com/watch?v=eVwl0hkI21Y)
 

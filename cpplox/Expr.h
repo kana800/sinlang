@@ -4,7 +4,7 @@
 #include <memory>
 #include <utility>
 #include <vector>
-#include "Token.h"
+#include "Token.hpp"
 
 struct Binary;
 struct Grouping;

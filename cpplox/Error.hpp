@@ -25,7 +25,7 @@ void error(
 	}
 	else {
 		report(token.getLine(), 
-			"at '" + token.getLexeme() + "'", message);
+			" at '" + token.getLexeme() + "'", message);
 	}
 }
 

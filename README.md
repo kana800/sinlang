@@ -86,7 +86,21 @@ user about their mistakes.
 
 ### [Types of Languages/Grammar](https://youtu.be/SToUyjAsaFk?t=1487)
 
+Parser can be categorized into:
 
+- LL 
+- LR
+- Ambiguous Grammars
+- Ambiguous Languages
+
+- LL
+    - LL(k) LL(1): One token look-ahead, Top-Down Recursive Descent. Simple fast
+    algorithms. Good error reporting. East for humans to Parse. 
+    
+- LR
+    - LR(k)
+    - SLR
+    - LALR
 
 ### References
 

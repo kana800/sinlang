@@ -1,3 +1,8 @@
+/*
+This file contains the logic for the parser;
+Most of its code is obtained from the cpplox repository
+from the lambda's way.
+*/
 #pragma once
 
 #include <iostream>
@@ -18,12 +23,11 @@
 
 class Parser {
 
-
 public:
-	Parser(
-		const std::vector<Token>& _tokens) : tokens{ _tokens } {};
+	/*constructor*/
+	Parser(const std::vector<Token>& _tokens) : tokens{ _tokens } {};
 
-
+	/*main method*/
 	std::shared_ptr<Expr> parse() {
 		try {
 			return expression();
@@ -122,7 +126,6 @@ private: /*methods*/
 
 	}
 
-	/*templated class: variadic template?*/
 	template <class... T>
 	bool match(T... type) {
 		assert((... && std::is_same_v<T, TokenType>));

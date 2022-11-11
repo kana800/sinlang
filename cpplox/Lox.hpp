@@ -5,6 +5,8 @@
 #include <fstream>
 
 #include "Scanner.hpp"
+#include "Parser.hpp"
+#include "AstPrinter.hpp"
 
 
 
@@ -34,6 +36,16 @@ std::vector<Token> run(std::string_view source) {
 	/**/
 	Scanner scanner{ source };
 	std::vector<Token> tokens = scanner.scanTokens();
+	for (const Token& token : tokens) {
+		std::cout << token.toString() << "\n";
+	}
+	Parser parser{ tokens };
+	std::shared_ptr<Expr> expr = parser.parse();
+
+	std::cout << AstPrinter{}.print(expr) << std::endl;
+
+
+	if (hadError) exit(-1);
 
 	/*
 	for (const Token& token : tokens) {

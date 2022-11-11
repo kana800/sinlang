@@ -47,6 +47,9 @@ public:
 	
 public:
 	TokenType getTokenType() const { return type; };
+	int getLine() const { return line; };
+	std::string getLexeme() const { return lexeme; };
+	std::any getLiteral() const { return literal; };
 
 private:
 	const TokenType type;

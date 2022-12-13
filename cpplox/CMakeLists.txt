@@ -7,7 +7,7 @@ set(HEADERS
 	"Options.hpp"
 	"TokenType.hpp"
 	"Parser.hpp"
-)
+ "RuntimeError.hpp")
 
 set(SOURCES 
 	"Lox.cpp"
